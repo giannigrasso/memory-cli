@@ -1,0 +1,283 @@
+Enter the number of players
+Please enter a number between 2 and 6:
+2
+Enter the name of player 1: Please enter a string:
+Fabio
+Enter the name of player 2: Please enter a string:
+Diego
+Insert height and width of the grid such that:
+- height > 0,
+- width > 0,
+- height * width < 186
+- height * width % 2 == 0
+
+Insert height: 
+Please enter a number between 1 and 186:
+3
+Insert width: 
+Please enter a number between 1 and 186:
+2
+      0   1 
+    ---------
+  0 | $ | # |
+    ---------
+  1 | " | # |
+    ---------
+  2 | $ | " |
+    ---------
+
+
+
+      0   1 
+    ---------
+  0 | ! | ! |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 | ! | ! |
+    ---------
+It's Fabio's turn.
+Enter the coordinates of the card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+-1
+Error: number not in range.
+Please enter a number between 0 and 2:
+0
+Insert column: 
+Please enter a number between 0 and 1:
+0
+      0   1 
+    ---------
+  0 | $ | ! |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 | ! | ! |
+    ---------
+Enter the coordinates of the second card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+0
+Insert column: 
+Please enter a number between 0 and 1:
+1
+      0   1 
+    ---------
+  0 | $ | # |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 | ! | ! |
+    ---------
+Sorry, the cards are not identical.
+      0   1 
+    ---------
+  0 | ! | ! |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 | ! | ! |
+    ---------
+It's Diego's turn.
+Enter the coordinates of the card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+0
+Insert column: 
+Please enter a number between 0 and 1:
+0
+      0   1 
+    ---------
+  0 | $ | ! |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 | ! | ! |
+    ---------
+Enter the coordinates of the second card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+2
+Insert column: 
+Please enter a number between 0 and 1:
+0
+      0   1 
+    ---------
+  0 | $ | ! |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 | $ | ! |
+    ---------
+Congratulations! You found a pair!
+      0   1 
+    ---------
+  0 |   | ! |
+    ---------
+  1 | ! | ! |
+    ---------
+  2 |   | ! |
+    ---------
+It's Diego's turn.
+Enter the coordinates of the card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+0
+Insert column: 
+Please enter a number between 0 and 1:
+0
+There is no card on the provided coordinates. Please enter new coordinates.
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+1
+Insert column: 
+Please enter a number between 0 and 1:
+0
+      0   1 
+    ---------
+  0 |   | ! |
+    ---------
+  1 | " | ! |
+    ---------
+  2 |   | ! |
+    ---------
+Enter the coordinates of the second card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+2
+Insert column: 
+Please enter a number between 0 and 1:
+1
+      0   1 
+    ---------
+  0 |   | ! |
+    ---------
+  1 | " | ! |
+    ---------
+  2 |   | " |
+    ---------
+Congratulations! You found a pair!
+      0   1 
+    ---------
+  0 |   | ! |
+    ---------
+  1 |   | ! |
+    ---------
+  2 |   |   |
+    ---------
+It's Diego's turn.
+Enter the coordinates of the card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+0
+Insert column: 
+Please enter a number between 0 and 1:
+1
+      0   1 
+    ---------
+  0 |   | # |
+    ---------
+  1 |   | ! |
+    ---------
+  2 |   |   |
+    ---------
+Enter the coordinates of the second card you want to turn:
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+0
+Insert column: 
+Please enter a number between 0 and 1:
+1
+The card in the specified position is already turned over.
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+1
+Insert column: 
+Please enter a number between 0 and 1:
+0
+There is no card on the provided coordinates. Please enter new coordinates.
+Insert row and column of the coordinate such that:
+- row >= 0,
+- row < 3,
+- col >= 0,
+- col < 2
+
+Insert row: 
+Please enter a number between 0 and 2:
+1
+1
+Insert column: 
+Please enter a number between 0 and 1:
+      0   1 
+    ---------
+  0 |   | # |
+    ---------
+  1 |   | # |
+    ---------
+  2 |   |   |
+    ---------
+Congratulations! You found a pair!
+The winner is:
+Player: Diego
+Nr of collected card pairs: 3
