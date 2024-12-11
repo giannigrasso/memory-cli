@@ -10,8 +10,8 @@ A simple text-based Memory game implemented in Java.
 ```bash
 git clone https://github.com/giannigrasso/memory-cli.git
 cd memory-cli/src
-javac Memory.java
-java Memory
+javac MemoryTest.java
+java MemoryTest
 ```
 
 ## Useful Links
