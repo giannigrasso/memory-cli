@@ -26,6 +26,10 @@ class Card {
      * The description of a card.
      */
     void print() {
-        System.out.print(" " + symbol + " ");
+        if (status) {
+            System.out.println(" " + symbol + " ");
+        } else {
+            System.out.print(" ! ");
+        }
     }
 }
