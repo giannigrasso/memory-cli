@@ -18,11 +18,12 @@ class Grid {
          * Sqrt(186) = 13.64, so maximum square grid is 13 x 13.
          */
         if (height <= 0 || width <= 0 || height * width > Constants.MAX_NR_CELLS || height * width % 2 != 0) {
-            height = 13;
-            width = 13;
+            height = 12;
+            width = 12;
         }
 
         Card[] pairs = generatePairs(height, width);
+
         Card[] shuffledPairs = shuffle(pairs);
         this.grid = generateGrid(shuffledPairs, height, width);
     }
@@ -35,15 +36,20 @@ class Grid {
      * @return the array containing the pairs of the grid
      */
     Card[] generatePairs(int height, int width) {
-        int totalPairs = height * width;
-        Card pairs[] = new Card[totalPairs];
+        //Creates an array containing all available characters
+        char[] characters = new char[Constants.AVAILABLE_CHARS];
+        int index = 0;
+        for (char c = Constants.MIN_CHAR; c <= Constants.MAX_CHAR; c++) {
+            characters[index++] = c;
+        }
 
-        for (int i = 0; i < totalPairs / 2; i++) {
-            int randomInt = (int) ((Constants.MAX_CHAR + 1 - Constants.MIN_CHAR) * Math.random() + Constants.MIN_CHAR);
-            char randomChar = (char) randomInt;
-
-            pairs[2 * i] = new Card(randomChar);
-            pairs[2 * i + 1] = new Card(randomChar);
+        //Create an array containing the cards
+        int totalCells = height * width;
+        int pairsNumber = totalCells / 2;
+        Card[] pairs = new Card[totalCells];
+        for (int i = 0; i < pairsNumber; i++) {
+            pairs[2 * i] = new Card(characters[i]);
+            pairs[2 * i + 1] = new Card(characters[i]);
         }
 
         return pairs;
@@ -79,7 +85,6 @@ class Grid {
 
         return grid;
     }
-
 
     void print() {
         // Print indices for columns

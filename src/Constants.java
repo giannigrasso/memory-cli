@@ -5,12 +5,12 @@ public class Constants {
     /**
      * The maximum number of cells.
      */
-    public static final int MAX_NR_CELLS = 169;
+    public static final int MAX_NR_CELLS = 186;
 
     /**
      * The first available unicode character
      */
-    public static final int MIN_CHAR = 32;
+    public static final int MIN_CHAR = 34;
 
     /**
      * The last available unicode character
@@ -18,12 +18,17 @@ public class Constants {
     public static final int MAX_CHAR = 126;
 
     /**
+     * The number of available characters
+     */
+    public static final int AVAILABLE_CHARS = 93;
+
+    /**
      * The character “space”
      */
-    public static final int EMPTY = 32;
+    public static final char EMPTY = ' ';
 
     /**
      * The character "!" (used for the back of a card)
      */
-    public static final int BACK = 33;
+    public static final char BACK = '!';
 }
