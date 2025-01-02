@@ -12,14 +12,24 @@ class Player {
      */
     int score;
 
+    /**
+     * The color of the player.
+     */
+    String color;
+
+    Ansi cmd = new Ansi();
+
+    
+
 
     /**
      * Player's constructor.
      * 
      * @param username the player's username
      */
-    Player(String username) {
+    Player(String username, String color) {
         this.username = username;
+        this.color = color;
     }
 
     /**
@@ -27,5 +37,10 @@ class Player {
      */
     void addPoint() {
         score++;
+    }
+
+    
+    void print() {
+        System.out.println(color + username + cmd.RESET);
     }
 }

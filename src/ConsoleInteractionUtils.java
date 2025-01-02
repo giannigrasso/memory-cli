@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 class ConsoleInteractionUtils {
     Scanner scanner = new Scanner(System.in);
+    Ansi cmd = new Ansi();
 
     int readIntegerInRange(int min, int max) {
         int input = 0;
@@ -10,11 +11,14 @@ class ConsoleInteractionUtils {
             System.out.println("Please enter a number between " + min + " and " + max + ":");
             if (scanner.hasNextInt()) {
                 input = scanner.nextInt();
-                if (input < min || input > max)
+                if (input < min || input > max) {
+                    cmd.clearScreen();
                     System.out.println("Error: number not in range.");
+                }
                 else
                     correctInput = true;
             } else {
+                cmd.clearScreen();
                 System.out.println("Error: input is not a number.");
                 emptyTheScanner();
             }
@@ -30,6 +34,7 @@ class ConsoleInteractionUtils {
             System.out.println("Please enter a string:");
             input = scanner.nextLine();
             if (input.trim().isEmpty()) {
+                cmd.clearLines(1);
                 System.out.println("Error: string is empty or contains only white spaces.");
             } else {
                 correctInput = true;
