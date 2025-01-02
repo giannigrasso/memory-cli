@@ -73,7 +73,7 @@ class ConsoleInteractionUtils {
         return new int[] { height, width };
     }
 
-    Coordinate getCoordinate(int gridHeight, int gridWidth) {
+    Coordinates getCoordinate(int gridHeight, int gridWidth) {
         String message = String.format("""
                 Insert row and column of the coordinate such that:
                 - row >= 0,
@@ -89,7 +89,7 @@ class ConsoleInteractionUtils {
         System.out.println("Insert column: ");
         int col = readIntegerInRange(0, gridWidth - 1);
 
-        return new Coordinate(row, col);
+        return new Coordinates(row, col);
     }
 
     void closeScanner() {

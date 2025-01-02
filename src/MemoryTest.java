@@ -7,7 +7,7 @@
  */
 public class MemoryTest {
     public static void main(String[] args) {
-        Grid grid = new Grid(14, 13);
-        grid.print();
+        Game game = new Game();
+
     }
 }

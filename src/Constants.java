@@ -31,4 +31,16 @@ public class Constants {
      * The character "!" (used for the back of a card)
      */
     public static final char BACK = '!';
+
+
+
+    /**
+     * The minimum number of players.
+     */
+    public static final int MIN_PLAYERS_NUMBER = 2;
+
+    /**
+     * The maximum number of players.
+     */
+    public static final int MAX_PLAYERS_NUMBER = 6;
 }

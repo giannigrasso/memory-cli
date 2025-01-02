@@ -18,7 +18,14 @@ class Player {
      * 
      * @param username the player's username
      */
-    public Player(String username) {
+    Player(String username) {
         this.username = username;
+    }
+
+    /**
+     * Increases the player's score.
+     */
+    void addPoint() {
+        score++;
     }
 }
