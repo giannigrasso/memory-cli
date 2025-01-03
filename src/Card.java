@@ -27,7 +27,7 @@ class Card {
      */
     void print() {
         if (status) {
-            System.out.println(" " + symbol + " ");
+            System.out.print(" " + symbol + " ");
         } else {
             System.out.print(" ! ");
         }
