@@ -5,7 +5,7 @@ class Grid {
     /**
      * The game grid.
      */
-    Card[][] grid;
+    Card[][] cards;
 
     Grid(int height, int width) {
         /*
@@ -25,7 +25,7 @@ class Grid {
         Card[] pairs = generatePairs(height, width);
 
         Card[] shuffledPairs = shuffle(pairs);
-        this.grid = generateGrid(shuffledPairs, height, width);
+        this.cards = generateGrid(shuffledPairs, height, width);
     }
 
     /**
@@ -74,31 +74,31 @@ class Grid {
     }
 
     Card[][] generateGrid(Card[] array, int height, int width) {
-        Card[][] grid = new Card[height][width];
+        Card[][] cards = new Card[height][width];
 
         int index = 0;
-        for (int i = 0; i < grid.length; i++) {
-            for (int j = 0; j < grid[i].length; j++) {
-                grid[i][j] = array[index++];
+        for (int i = 0; i < cards.length; i++) {
+            for (int j = 0; j < cards[i].length; j++) {
+                cards[i][j] = array[index++];
             }
         }
 
-        return grid;
+        return cards;
     }
 
     void print() {
         // Print indices for columns
         System.out.print("    "); // initial space for row indices
-        for (int i = 0; i < grid[0].length; i++) {
+        for (int i = 0; i < cards[0].length; i++) {
             System.out.printf(" %2d ", i);
         }
         System.out.println();
 
         // Print grid content
-        for (int i = 0; i < grid.length; i++) {
+        for (int i = 0; i < cards.length; i++) {
             // Print top border for row
             System.out.print("    "); // initial space for row indices
-            for (int j = 0; j < grid[i].length * 4 + 1; j++) {
+            for (int j = 0; j < cards[i].length * 4 + 1; j++) {
                 System.out.print("-");
             }
             System.out.println();
@@ -106,9 +106,9 @@ class Grid {
             // Print row index
             System.out.printf(" %2d |", i);
 
-            for (int j = 0; j < grid[i].length; j++) {
-                if (grid[i][j] != null) {
-                    grid[i][j].print();
+            for (int j = 0; j < cards[i].length; j++) {
+                if (cards[i][j] != null) {
+                    cards[i][j].print();
                 } else {
                     System.out.print("   ");
                 }
@@ -119,7 +119,7 @@ class Grid {
 
         // Print bottom border for last row
         System.out.print("    "); // initial space for row indices
-        for (int i = 0; i < grid[0].length * 4 + 1; i++) {
+        for (int i = 0; i < cards[0].length * 4 + 1; i++) {
             System.out.print("-");
         }
         System.out.println();
