@@ -29,7 +29,7 @@ class Card {
         if (status) {
             System.out.print(" " + symbol + " ");
         } else {
-            System.out.print(" ! ");
+            System.out.print(" " + Constants.BACK + " ");
         }
     }
 }

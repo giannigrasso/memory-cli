@@ -23,11 +23,6 @@ public class Constants {
     public static final int AVAILABLE_CHARS = 93;
 
     /**
-     * The character “space”
-     */
-    public static final char EMPTY = ' ';
-
-    /**
      * The character "!" (used for the back of a card)
      */
     public static final char BACK = '!';

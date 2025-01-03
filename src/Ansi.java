@@ -12,14 +12,17 @@ class Ansi {
 
     public static final String RESET = "\u001B[0m";
     public static final String[] COLORS = {
+        "\033[36m", //Cyan
+        "\033[33m", //Yellow
         "\033[34m", //Blue
         "\033[32m", //Green
-        "\033[33m", //Yellow
-        "\033[36m", //Cyan
         "\033[31m", //Red
         "\033[35m", //Magenta
     };
-    
+
+    public static final String BACKGROUND_ERROR = "\033[41m";
+    public static final String BACKGROUND_REQUEST = "\u001B[44m";
+    public static final String BACKGROUND_SUCCESS = "\u001B[42m";
 
     void cursorTo(int row, int col) {
         System.out.printf("\u001B[%d;%dH", row, col);

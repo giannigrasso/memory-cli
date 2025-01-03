@@ -13,13 +13,13 @@ class ConsoleInteractionUtils {
                 input = scanner.nextInt();
                 if (input < min || input > max) {
                     //cmd.clearScreen();
-                    System.out.println("Error: number not in range.");
+                    printError("Error: number not in range.");
                 }
                 else
                     correctInput = true;
             } else {
                 //cmd.clearScreen();
-                System.out.println("Error: input is not a number.");
+                printError("Error: input is not a number.");
                 emptyTheScanner();
             }
         }
@@ -35,7 +35,7 @@ class ConsoleInteractionUtils {
             input = scanner.nextLine();
             if (input.trim().isEmpty()) {
                 //cmd.clearLines(1);
-                System.out.println("Error: string is empty or contains only white spaces.");
+                printError("Error: string is empty or contains only white spaces.");
             } else {
                 correctInput = true;
             }
@@ -62,16 +62,16 @@ class ConsoleInteractionUtils {
 
         System.out.println(message);
         do {
-            System.out.println("Insert height: ");
+            printRequest("Insert height: ");
             height = readIntegerInRange(1, Constants.MAX_NR_CELLS);
 
-            System.out.println("Insert width: ");
+            printRequest("Insert width: ");
             width = readIntegerInRange(1, Constants.MAX_NR_CELLS);
 
             isValidInputs = isValidGridDimensions(height, width);
 
             if (!isValidInputs) {
-                System.out.println("One or more constraints are not met.");
+                printError("One or more constraints are not met.");
             }
 
         } while (!isValidInputs);
@@ -88,10 +88,10 @@ class ConsoleInteractionUtils {
                 """, gridHeight, gridWidth);
 
         System.out.println(message);
-        System.out.println("Insert row: ");
+        printRequest("Insert row: ");
         int row = readIntegerInRange(0, gridHeight - 1);
 
-        System.out.println("Insert column: ");
+        printRequest("Insert column: ");
         int col = readIntegerInRange(0, gridWidth - 1);
 
         return new Coordinates(row, col);
@@ -103,5 +103,17 @@ class ConsoleInteractionUtils {
 
     void emptyTheScanner() {
         scanner.nextLine();
+    }
+
+    void printError(String msg) {
+        System.out.println(Ansi.BACKGROUND_ERROR + msg + Ansi.RESET);
+    }
+
+    void printRequest(String msg) {
+        System.out.println(Ansi.BACKGROUND_REQUEST + msg + Ansi.RESET);
+    }
+
+    void printSuccess(String msg) {
+        System.out.println(Ansi.BACKGROUND_SUCCESS + msg + Ansi.RESET);
     }
 }

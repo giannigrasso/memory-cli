@@ -45,7 +45,7 @@ class Game {
                 isFinished = true;
                 Player[] winners = declareWinners(players);
 
-                System.out.println("The winner is:");
+                console.printSuccess("The winner is:");
                 for (int i = 0; i < winners.length; i++) {
                     System.out.print("Player: ");
                     winners[i].print();
@@ -60,14 +60,14 @@ class Game {
 
 
     int setPlayersNumber() {
-        System.out.println("Enter the number of players");
+        console.printRequest("Enter the number of players");
         return console.readIntegerInRange(Constants.MIN_PLAYERS_NUMBER, Constants.MAX_PLAYERS_NUMBER);
     }
 
 
     void createPlayers(Player[] players) {
         for (int i = 0; i < players.length; i++) {
-            System.out.print("Enter the name of player " + (i + 1) + ": ");
+            console.printRequest("Enter the name of player " + (i + 1) + ": ");
             
             players[i] = new Player(console.readStringAndEnsureIsNotEmptyOrWhiteSpaces(), Ansi.COLORS[i]);
             //cmd.clearScreen();
@@ -104,7 +104,7 @@ class Game {
         //cmd.clearScreen();
 
         if(checkPair(firstCell, secondCell)) {
-            System.out.println("Congratulations, you find a pair!");
+            console.printSuccess("Congratulations, you find a pair!");
             grid.cards[firstCell.row][firstCell.col] = null;
             grid.cards[secondCell.row][secondCell.col] = null;
             player.addPoint();
@@ -139,12 +139,13 @@ class Game {
     }
 
     Coordinates chooseFirstCell(Grid grid) {
+        System.out.println("Enter the coordinates of the card you want to turn:");
         boolean correctInput = false;
         Coordinates cellCoordinates = new Coordinates(0, 0);
         while (!correctInput) {
             cellCoordinates = console.getCoordinate(grid.cards.length, grid.cards[0].length);
             if (checkIfEmpty(cellCoordinates, grid)) {
-                System.out.println("There is no card on the provided coordinates. Please enter new coordinates.");
+                console.printError("There is no card on the provided coordinates. Please enter new coordinates.");
             } else {
                 correctInput = true;
                 grid.cards[cellCoordinates.row][cellCoordinates.col].status = true;
@@ -155,14 +156,15 @@ class Game {
     }
 
     Coordinates chooseSecondCell(Grid grid, Coordinates firstCellCoordinates) {
+        System.out.println("Enter the coordinates of the second card you want to turn:");
         boolean correctInput = false;
         Coordinates secondCellCoordinates = new Coordinates(0, 0);
         while (!correctInput) {
             secondCellCoordinates = console.getCoordinate(grid.cards.length, grid.cards[0].length);
             if (checkIfEmpty(secondCellCoordinates, grid)) {
-                System.out.println("There is no card on the provided coordinates. Please enter new coordinates.");
+                console.printError("There is no card on the provided coordinates. Please enter new coordinates.");
             } else if (checkIfCoordinatesAreEquals(firstCellCoordinates, secondCellCoordinates)) {
-                System.out.println("The card in the specified position is already turned over.");
+                console.printError("The card in the specified position is already turned over.");
             }else {
                 correctInput = true;
                 grid.cards[secondCellCoordinates.row][secondCellCoordinates.col].status = true;
