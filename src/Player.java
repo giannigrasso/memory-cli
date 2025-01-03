@@ -15,11 +15,7 @@ class Player {
     /**
      * The color of the player.
      */
-    String color;
-
-    Ansi cmd = new Ansi();
-
-    
+    String color;    
 
 
     /**
@@ -39,8 +35,8 @@ class Player {
         score++;
     }
 
-    
+
     void print() {
-        System.out.println(color + username + cmd.RESET);
+        System.out.print(color + username + Ansi.RESET);
     }
 }
