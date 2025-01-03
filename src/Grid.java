@@ -7,6 +7,8 @@ class Grid {
      */
     Card[][] cards;
 
+    int cardsNumber;
+
     Grid(int height, int width) {
         /*
          * Printable unicode characters are 95.
@@ -26,6 +28,8 @@ class Grid {
 
         Card[] shuffledPairs = shuffle(pairs);
         this.cards = generateGrid(shuffledPairs, height, width);
+
+        this.cardsNumber = cards.length * cards[0].length;
     }
 
     /**

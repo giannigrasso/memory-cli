@@ -12,13 +12,13 @@ class ConsoleInteractionUtils {
             if (scanner.hasNextInt()) {
                 input = scanner.nextInt();
                 if (input < min || input > max) {
-                    cmd.clearScreen();
+                    //cmd.clearScreen();
                     System.out.println("Error: number not in range.");
                 }
                 else
                     correctInput = true;
             } else {
-                cmd.clearScreen();
+                //cmd.clearScreen();
                 System.out.println("Error: input is not a number.");
                 emptyTheScanner();
             }
@@ -34,7 +34,7 @@ class ConsoleInteractionUtils {
             System.out.println("Please enter a string:");
             input = scanner.nextLine();
             if (input.trim().isEmpty()) {
-                cmd.clearLines(1);
+                //cmd.clearLines(1);
                 System.out.println("Error: string is empty or contains only white spaces.");
             } else {
                 correctInput = true;

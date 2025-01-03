@@ -12,18 +12,49 @@ class Game {
 
     Grid grid;
 
+    int takenCards;
+
 
     Game() {
         cmd.clearScreen();
         playersNumber = setPlayersNumber();
-        cmd.clearScreen();
+        //cmd.clearScreen();
         players = new Player[playersNumber];
 
         createPlayers(players);
         
         setGrid();
 
-        turn(players[0]);
+        //turn(players[0]);
+    }
+
+
+    void start() {
+        boolean isFinished = false;
+        int index = 0;
+        while (!isFinished) {
+            if (!turn(players[index])) {
+                if (index == playersNumber - 1) {
+                    index = 0;
+                }else {
+                    index++;
+                }
+            }
+
+            if(grid.cardsNumber == takenCards) {
+                isFinished = true;
+                Player[] winners = declareWinners(players);
+
+                System.out.println("The winner is:");
+                for (int i = 0; i < winners.length; i++) {
+                    System.out.print("Player: ");
+                    winners[i].print();
+                    System.out.println();
+                    
+                    System.out.print("Nr of collected card pairs: " + winners[i].score);
+                }
+            }
+        }
     }
 
 
@@ -39,7 +70,7 @@ class Game {
             System.out.print("Enter the name of player " + (i + 1) + ": ");
             
             players[i] = new Player(console.readStringAndEnsureIsNotEmptyOrWhiteSpaces(), Ansi.COLORS[i]);
-            cmd.clearScreen();
+            //cmd.clearScreen();
         }
     }
 
@@ -47,7 +78,7 @@ class Game {
     void setGrid() {
         int[] gridSizes = console.getGridDimensions();
         grid = new Grid(gridSizes[0], gridSizes[1]);
-        cmd.clearScreen();
+        //cmd.clearScreen();
         grid.print();
     }
 
@@ -70,21 +101,22 @@ class Game {
         
         grid.cards[secondCell.row][secondCell.col].status = true;
         */
-        cmd.clearScreen();
-        grid.print();
+        //cmd.clearScreen();
 
         if(checkPair(firstCell, secondCell)) {
             System.out.println("Congratulations, you find a pair!");
             grid.cards[firstCell.row][firstCell.col] = null;
             grid.cards[secondCell.row][secondCell.col] = null;
             player.addPoint();
+            takenCards += 2;
+            grid.print();
             return true;
         } else {
             System.out.println("Sorry, the cards are not identical.");
             grid.cards[firstCell.row][firstCell.col].status = false;
             grid.cards[secondCell.row][secondCell.col].status = false;
+            grid.print();
         }
-        grid.print();
         return false;
     }
 
@@ -100,7 +132,7 @@ class Game {
     }
 
     boolean checkIfCoordinatesAreEquals(Coordinates firstCellCoordinates, Coordinates secondCellCoordinates) {
-        if(firstCellCoordinates.row == secondCellCoordinates.row && firstCellCoordinates.col == secondCellCoordinates.row) {
+        if(firstCellCoordinates.row == secondCellCoordinates.row && firstCellCoordinates.col == secondCellCoordinates.col) {
             return true;
         }
         return false;
@@ -116,6 +148,7 @@ class Game {
             } else {
                 correctInput = true;
                 grid.cards[cellCoordinates.row][cellCoordinates.col].status = true;
+                grid.print();
             }
         }
         return cellCoordinates;
@@ -133,9 +166,40 @@ class Game {
             }else {
                 correctInput = true;
                 grid.cards[secondCellCoordinates.row][secondCellCoordinates.col].status = true;
+                grid.print();
             }
         }
         return secondCellCoordinates;
+    }
+
+    Player[] declareWinners(Player[] players) {
+        Player winner = players[0];
+        int maxScore = -1;
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].score > maxScore) {
+                winner = players[i];
+                maxScore = winner.score;
+            }
+        }
+
+        
+        int winnersCount = 0;
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].score == maxScore) {
+                winnersCount++;
+            }
+        }
+
+        Player[] winners = new Player[winnersCount];
+        int index = 0;
+        for (int i = 0; i < players.length; i++) {
+            if (players[i].score == maxScore) {
+                winners[index] = players[i];
+                index++;
+            }
+        }
+
+        return winners;
     }
     
 }
