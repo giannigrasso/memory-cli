@@ -15,5 +15,4 @@ java MemoryTest
 ```
 
 ## Useful Links
-- [Documentation](./docs/main.pdf)
 - [Requirements](./specs/Memory_I1B_SA2024.pdf)
