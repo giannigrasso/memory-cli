@@ -1,7 +1,12 @@
 /**
  * Class representing the logic of the game.
+ * 
+ * @author Gianni Grasso
+ * @author Andro Ibrahim
+ * @version 2025.01.03
  */
 class Game {
+
     ConsoleInteractionUtils console = new ConsoleInteractionUtils();
 
     Ansi cmd = new Ansi();
@@ -15,20 +20,23 @@ class Game {
     int takenCards;
 
 
+    /**
+     * Game constructor.
+     */
     Game() {
         cmd.clearScreen();
         playersNumber = setPlayersNumber();
-        //cmd.clearScreen();
         players = new Player[playersNumber];
 
         createPlayers(players);
         
         setGrid();
-
-        //turn(players[0]);
     }
 
 
+    /**
+     * Function that starts the game.
+     */
     void start() {
         boolean isFinished = false;
         int index = 0;
@@ -58,31 +66,45 @@ class Game {
     }
 
 
-
+    /**
+     * Determines the number of players.
+     * 
+     * @return the number of players
+     */
     int setPlayersNumber() {
         console.printRequest("Enter the number of players");
         return console.readIntegerInRange(Constants.MIN_PLAYERS_NUMBER, Constants.MAX_PLAYERS_NUMBER);
     }
 
-
+    /**
+     * Creates the players.
+     * 
+     * @param players the array that will contain the players
+     */
     void createPlayers(Player[] players) {
         for (int i = 0; i < players.length; i++) {
             console.printRequest("Enter the name of player " + (i + 1) + ": ");
             
             players[i] = new Player(console.readStringAndEnsureIsNotEmptyOrWhiteSpaces(), Ansi.COLORS[i]);
-            //cmd.clearScreen();
         }
     }
 
-
+    /**
+     * Set grid parameters.
+     */
     void setGrid() {
         int[] gridSizes = console.getGridDimensions();
         grid = new Grid(gridSizes[0], gridSizes[1]);
-        //cmd.clearScreen();
+
         grid.print();
     }
 
-
+    /**
+     * Single- turn logic.
+     * 
+     * @param player the player who takes the turn
+     * @return the result of the shift (true = pair found)
+     */
     boolean turn(Player player) {
         System.out.print("It's ");
         player.print();
@@ -90,18 +112,6 @@ class Game {
 
         Coordinates firstCell = chooseFirstCell(grid);
         Coordinates secondCell = chooseSecondCell(grid, firstCell);
-
-        /**Coordinates firstCell = console.getCoordinate(grid.cards.length, grid.cards[0].length);
-        checkIfEmpty(firstCell, grid);
-        grid.cards[firstCell.row][firstCell.col].status = true;
-        cmd.clearScreen();
-        grid.print();
-
-        Coordinates secondCell = console.getCoordinate(grid.cards.length, grid.cards[0].length);
-        
-        grid.cards[secondCell.row][secondCell.col].status = true;
-        */
-        //cmd.clearScreen();
 
         if(checkPair(firstCell, secondCell)) {
             console.printSuccess("Congratulations, you find a pair!");
@@ -120,10 +130,24 @@ class Game {
         return false;
     }
 
+    /**
+     * Check if two cards are the same.
+     * 
+     * @param firstCell the coordinates of the first card
+     * @param secondCell the coordinates of the second card
+     * @return
+     */
     boolean checkPair(Coordinates firstCell, Coordinates secondCell) {
         return grid.cards[firstCell.row][firstCell.col].symbol == grid.cards[secondCell.row][secondCell.col].symbol;
     }
 
+    /**
+     * Check if a cell is empty.
+     * 
+     * @param cellCoordinates the coordinates of the cell
+     * @param grid the grid containing the cell
+     * @return
+     */
     boolean checkIfEmpty(Coordinates cellCoordinates, Grid grid) {
         if (grid.cards[cellCoordinates.row][cellCoordinates.col] == null) {
             return true;
@@ -131,6 +155,13 @@ class Game {
         return false;
     }
 
+    /**
+     * Check if two coordinates are the same.
+     * 
+     * @param firstCellCoordinates the first coordinates
+     * @param secondCellCoordinates the second coordinates
+     * @return true if coordinates are equals
+     */
     boolean checkIfCoordinatesAreEquals(Coordinates firstCellCoordinates, Coordinates secondCellCoordinates) {
         if(firstCellCoordinates.row == secondCellCoordinates.row && firstCellCoordinates.col == secondCellCoordinates.col) {
             return true;
@@ -138,6 +169,12 @@ class Game {
         return false;
     }
 
+    /**
+     * Make the player choose the first card.
+     * 
+     * @param grid the grid containing the cells
+     * @return the coordinates of the chosen card
+     */
     Coordinates chooseFirstCell(Grid grid) {
         System.out.println("Enter the coordinates of the card you want to turn:");
         boolean correctInput = false;
@@ -155,6 +192,13 @@ class Game {
         return cellCoordinates;
     }
 
+    /**
+     * Make the player choose the second card.
+     * 
+     * @param grid the grid containing the cells
+     * @param firstCellCoordinates the coordinates of the first card
+     * @return the coordinates of the chosen card
+     */
     Coordinates chooseSecondCell(Grid grid, Coordinates firstCellCoordinates) {
         System.out.println("Enter the coordinates of the second card you want to turn:");
         boolean correctInput = false;
@@ -174,6 +218,12 @@ class Game {
         return secondCellCoordinates;
     }
 
+    /**
+     * Determines the winning player.
+     * 
+     * @param players the array of players
+     * @return the array containing the winners of the game
+     */
     Player[] declareWinners(Player[] players) {
         Player winner = players[0];
         int maxScore = -1;
@@ -203,5 +253,4 @@ class Game {
 
         return winners;
     }
-    
 }

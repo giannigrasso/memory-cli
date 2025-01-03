@@ -1,5 +1,9 @@
 /**
  * Class containing program constants.
+ * 
+ * @author Gianni Grasso
+ * @author Andro Ibrahim
+ * @version 2025.01.03
  */
 public class Constants {
     /**
@@ -26,7 +30,6 @@ public class Constants {
      * The character "!" (used for the back of a card)
      */
     public static final char BACK = '!';
-
 
 
     /**

@@ -1,5 +1,9 @@
 /**
  * Class representing a playing card.
+ * 
+ * @author Gianni Grasso
+ * @author Andro Ibrahim
+ * @version 2025.01.03
  */
 class Card {
     /**
@@ -23,7 +27,7 @@ class Card {
     }
 
     /**
-     * The description of a card.
+     * Print the card.
      */
     void print() {
         if (status) {

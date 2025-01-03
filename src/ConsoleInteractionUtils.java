@@ -12,13 +12,11 @@ class ConsoleInteractionUtils {
             if (scanner.hasNextInt()) {
                 input = scanner.nextInt();
                 if (input < min || input > max) {
-                    //cmd.clearScreen();
                     printError("Error: number not in range.");
                 }
                 else
                     correctInput = true;
             } else {
-                //cmd.clearScreen();
                 printError("Error: input is not a number.");
                 emptyTheScanner();
             }
@@ -34,7 +32,6 @@ class ConsoleInteractionUtils {
             System.out.println("Please enter a string:");
             input = scanner.nextLine();
             if (input.trim().isEmpty()) {
-                //cmd.clearLines(1);
                 printError("Error: string is empty or contains only white spaces.");
             } else {
                 correctInput = true;
@@ -105,14 +102,29 @@ class ConsoleInteractionUtils {
         scanner.nextLine();
     }
 
+    /**
+     * Function to print an error message.
+     * 
+     * @param msg the message to print
+     */
     void printError(String msg) {
         System.out.println(Ansi.BACKGROUND_ERROR + msg + Ansi.RESET);
     }
 
+    /**
+     * Function to print a request message.
+     * 
+     * @param msg the message to print
+     */
     void printRequest(String msg) {
         System.out.println(Ansi.BACKGROUND_REQUEST + msg + Ansi.RESET);
     }
 
+    /**
+     * Function to print a success message.
+     * 
+     * @param msg the message to print
+     */
     void printSuccess(String msg) {
         System.out.println(Ansi.BACKGROUND_SUCCESS + msg + Ansi.RESET);
     }

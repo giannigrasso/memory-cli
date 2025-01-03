@@ -1,5 +1,9 @@
 /**
  * Class representing a player.
+ * 
+ * @author Gianni Grasso
+ * @author Andro Ibrahim
+ * @version 2025.01.03
  */
 class Player {
     /**
@@ -35,7 +39,9 @@ class Player {
         score++;
     }
 
-
+    /**
+     * Print the player's name.
+     */
     void print() {
         System.out.print(color + username + Ansi.RESET);
     }

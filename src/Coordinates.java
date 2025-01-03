@@ -1,5 +1,9 @@
 /**
  * Class representing the position of a cell in the grid.
+ * 
+ * @author Gianni Grasso
+ * @author Andro Ibrahim
+ * @version 2025.01.03
  */
 class Coordinates {
     /**

@@ -1,5 +1,9 @@
 /**
  * Class representing the game grid.
+ * 
+ * @author Gianni Grasso
+ * @author Andro Ibrahim
+ * @version 2025.01.03
  */
 class Grid {
     /**
@@ -7,8 +11,17 @@ class Grid {
      */
     Card[][] cards;
 
+    /**
+     * The number of cards/cells in the grid.
+     */
     int cardsNumber;
 
+    /**
+     * Grid constructor.
+     * 
+     * @param height the height of the grid
+     * @param width the width of the grid
+     */
     Grid(int height, int width) {
         /*
          * Printable unicode characters are 95.
@@ -25,10 +38,9 @@ class Grid {
         }
 
         Card[] pairs = generatePairs(height, width);
-
         Card[] shuffledPairs = shuffle(pairs);
-        this.cards = generateGrid(shuffledPairs, height, width);
 
+        this.cards = generateGrid(shuffledPairs, height, width);
         this.cardsNumber = cards.length * cards[0].length;
     }
 
@@ -77,6 +89,14 @@ class Grid {
         return array;
     }
 
+    /**
+     * Generate the game grid.
+     * 
+     * @param array the cards to be placed inside the grid
+     * @param height the height of the grid
+     * @param width the width of the grid
+     * @return the game grid
+     */
     Card[][] generateGrid(Card[] array, int height, int width) {
         Card[][] cards = new Card[height][width];
 
@@ -90,6 +110,7 @@ class Grid {
         return cards;
     }
 
+    
     void print() {
         // Print indices for columns
         System.out.print("    "); // initial space for row indices
